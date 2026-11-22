@@ -1,16 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function proxy(req: NextRequest) {
-  const token = req.cookies.get('token')?.value;
+  const session = req.cookies.get('auth_session')?.value;
 
-  if (!token) {
-    return NextResponse.redirect(
-      new URL('/', req.url)
-    );
+  if (!session) {
+    return NextResponse.redirect(new URL('/', req.url));
   }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: [
+    '/dashboard/:path*',
+    '/categories/:path*',
+    '/authors/:path*',
+    '/books/:path*',
+    '/readers/:path*',
+    '/loans/:path*',
+    '/users/:path*',
+  ],
 };

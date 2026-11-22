@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
   --unipar-vermelho: #C22820;   /* vermelho Unipar */
   --unipar-vinho:    #5C2034;   /* vinho Unipar  */
